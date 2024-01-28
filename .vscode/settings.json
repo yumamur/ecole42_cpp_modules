@@ -1,0 +1,7 @@
+{
+	"errorLens.delay": 1500,
+	"files.associations": {
+		"cstring": "cpp"
+	},
+	"CodeGPT.apiKey": "Google AI Studio"
+}

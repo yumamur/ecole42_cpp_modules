@@ -1,19 +1,21 @@
-NAME	=	megaphone
+NAME	=	ex04
 
 CFLAGS	=	-Wall -Werror -Wextra -std=c++98
 CC		=	c++
+
+SRC		=	main.cpp
 
 .PHONY: all clean re
 
 all: $(NAME)
 
-$(NAME): megaphone.cpp
-	@$(CC) $(CFLAGS) megaphone.cpp -o $(NAME)
+$(NAME): $(SRC)
+	@$(CC) $(CFLAGS) $(SRC) -o $(NAME) -g
 
 clean:
 	@rm -rf $(NAME)
 
 fclean:
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) *.replace
 
 re: clean all
