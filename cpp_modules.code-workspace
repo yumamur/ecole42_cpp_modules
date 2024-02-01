@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "cpp_modules",
+			"path": "."
+		}
+	],
+	"settings": {
+		"errorLens.delay": 1500,
+		"files.associations": {
+			"cstring": "cpp"
+		}
+	}
+}

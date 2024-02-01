@@ -1,7 +1,6 @@
 #include "Harl.h"
 
 #include <iostream>
-#include <map>
 
 Harl::Harl() {
 }
@@ -26,13 +25,19 @@ void Harl::error( void ) {
 }
 
 void Harl::complain( std::string level ) {
-    std::map<std::string, void ( Harl::* )( void )> level_map;
-    level_map["DEBUG"]   = &Harl::debug;
-    level_map["INFO"]    = &Harl::info;
-    level_map["WARNING"] = &Harl::warning;
-    level_map["ERROR"]   = &Harl::error;
+    void ( Harl::*f[4] )( void ) = { &Harl::debug, &Harl::info, &Harl::warning,
+                                     &Harl::error };
+    int         index;
+    std::string levels[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
 
-    if ( level_map.find( level ) != level_map.end() ) {
-        ( this->*level_map[level] )();
+    for ( index = 0; index < 4; index++ ) {
+        if ( levels[index] == level ) {
+            break;
+        }
+    }
+    if ( index < 4 ) {
+        ( this->*f[index] )();
+    } else {
+        std::cerr << "Invalid level: " << level << std::endl;
     }
 }

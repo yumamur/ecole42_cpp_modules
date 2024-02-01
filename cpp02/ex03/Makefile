@@ -18,7 +18,7 @@ SRC		=	main.cpp \
 all: $(NAME)
 
 $(NAME): $(SRC)
-	@$(CC) $(CFLAGS) $(SRC) -o $(NAME) -g
+	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
 clean:
 	@rm -rf $(NAME)
