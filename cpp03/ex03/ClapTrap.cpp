@@ -9,18 +9,19 @@ ClapTrap::ClapTrap() {
 
 ClapTrap::ClapTrap( std::string name ) :
     _name( name ), _hitPoints( 10 ), _energyPoints( 10 ), _attackDamage( 0 ) {
-    std::cout << "ClapTrap name constructor called" << std::endl;
+    std::cout << "ClapTrap name constructor called with " << _name << std::endl;
 }
 
 ClapTrap::ClapTrap( const ClapTrap &source ) :
     _name( source._name ), _hitPoints( source._hitPoints ),
     _energyPoints( source._energyPoints ),
     _attackDamage( source._attackDamage ) {
-    std::cout << "ClapTrap copy constructor called" << std::endl;
+    std::cout << "ClapTrap copy constructor called from " << source._name
+              << " to " << _name << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << "ClapTrap destructor called" << std::endl;
+    std::cout << "ClapTrap destructor called for " << _name << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=( const ClapTrap &source ) {

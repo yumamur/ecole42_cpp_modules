@@ -1,7 +1,7 @@
 #CONFIG
 
 CFLAGS = -Wall -Werror -Wextra -Wpedantic -std=c++98
-SRC = `find $$i | grep .cpp | cut -d/ -f3 | tr '\n' ' '`
+SRC = `find $$i | grep \.cpp | cut -d/ -f3 | tr '\n' ' '`
 
 #END CONFIG
 
@@ -24,10 +24,10 @@ all re clean:
 create:
 	@for i in $(MODULES); \
 	do \
-		if [ ! -f "$$i/Makefile" ]; \
+		if [ ! -f "$$i/Makefile" ] && [ -n "$$(find $$i -name '*.cpp' -print -quit)" ]; \
 		then \
 			echo "\033[38;2;150;150;250;1mCreating Makefile for $$i\033[m"; \
-			printf "NAME = `echo $$i | cut -d/ -f-1`\n\n" > $$i/Makefile; \
+			printf "NAME = `echo $$i | cut -d/ -f2-`\n\n" > $$i/Makefile; \
 			printf "ifeq (%c(shell uname), Linux)\n" >> $$i/Makefile '$$'; \
 			printf "\tCC = clang++\n" >> $$i/Makefile; \
 			printf "else\n" >> $$i/Makefile; \
@@ -38,7 +38,7 @@ create:
 			printf ".PHONY: all clean fclean re\n\n" >> $$i/Makefile; \
 			printf "all: %c(NAME)\n\n" '$$' >> $$i/Makefile; \
 			printf "%c(NAME): %c(SRC)\n" '$$' '$$' >> $$i/Makefile; \
-			printf "\t%c(CC) %c(CFLAGS) %c(SRC) -o %c(NAME)\n\n" '$$' '$$' '$$' '$$' >> $$i/Makefile; \
+			printf "\t@%c(CC) %c(CFLAGS) %c(SRC) -o %c(NAME)\n\n" '$$' '$$' '$$' '$$' >> $$i/Makefile; \
 			printf "clean:\n" >> $$i/Makefile; \
 			printf "\trm -rf %c(NAME)\n\n" '$$' >> $$i/Makefile; \
 			printf "fclean:\n" >> $$i/Makefile; \

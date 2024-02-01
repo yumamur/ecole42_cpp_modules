@@ -1,13 +1,13 @@
 #include "ClapTrap.hpp"
 
 int main() {
-    ClapTrap clapTrap( "leyley" );
+    ClapTrap clapTrap( "foo" );
+    ClapTrap heheh( "heheh" );
 
     clapTrap.attack( "target" );
     clapTrap.takeDamage( 5 );
     clapTrap.takeDamage( 5 );
     clapTrap.takeDamage( 5 );
     clapTrap.attack( "target" );
-
-    return 0;
+    heheh.beRepaired( 15 );
 }

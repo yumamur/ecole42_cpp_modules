@@ -1,4 +1,4 @@
-NAME = ex00
+NAME = ex02
 
 ifeq ($(shell uname), Linux)
 	CC = clang++
@@ -8,7 +8,7 @@ endif
 
 CFLAGS = -Wall -Werror -Wextra -Wpedantic -std=c++98
 
-SRC = main.cpp ClapTrap.cpp 
+SRC = main.cpp ScavTrap.cpp ClapTrap.cpp FragTrap.cpp 
 
 .PHONY: all clean fclean re
 
