@@ -1,9 +1,14 @@
-NAME	=	megaphone
+NAME   = megaphone
 
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
-CC		=	c++
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-.PHONY: all clean re
+ifeq ($(shell uname), Linux)
+    CC = clang++
+else
+    CC = c++
+endif
+
+.PHONY: all clean fclean re
 
 all: $(NAME)
 

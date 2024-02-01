@@ -1,7 +1,12 @@
 NAME	=	ex01
 
+ifeq ($(shell uname), Linux)
+    CC = clang++
+else
+    CC = c++
+endif
+
 CFLAGS	=	-Wall -Werror -Wextra -std=c++98
-CC		=	c++
 
 SRC		=	main.cpp \
 			Fixed.cpp

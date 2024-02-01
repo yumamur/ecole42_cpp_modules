@@ -1,5 +1,7 @@
 #include "Point.hpp"
 
+#include <iostream>
+
 bool eval( Point const &ref,
            Point const &p1,
            Point const &p2,
@@ -11,15 +13,21 @@ bool eval( Point const &ref,
     Fixed dist  = Point::magnR( evalNorm );
     Fixed other = Point::magnR( ( p1Norm + p2Norm ) - evalNorm );
 
-    if ( dist < other ) {
-        return true;
-    } else {
-        return false;
-    }
+    std::cout << "dist: " << dist << std::endl;
+    std::cout << "other: " << other << std::endl;
+
+    return dist != 0 && dist < other;
 }
 
 bool bsp( Point const a, Point const b, Point const c, Point const point ) {
-    bool res = eval( a, b, c, point ) && eval( b, a, c, point ) &&
-               eval( c, b, a, point );
-    return res;
+    std::cout << "a: " << a << std::endl;
+    std::cout << "b: " << b << std::endl;
+    std::cout << "c: " << c << std::endl;
+    std::cout << "p: " << point << std::endl;
+
+    bool res1 = eval( a, b, c, point );
+    bool res2 = eval( b, a, c, point );
+    bool res3 = eval( c, b, a, point );
+
+    return res1 && res2 && res3;
 }

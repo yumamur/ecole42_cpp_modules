@@ -27,22 +27,22 @@ Fixed Point::getX( void ) const {
 }
 
 Fixed Point::getY( void ) const {
-    return ( this->x );
+    return ( this->y );
 }
 
-Point Point::operator-( Point &p ) {
+Point Point::operator-( Point &p ) const {
     return Point( this->getX() - p.getX(), this->getY() - p.getY() );
 }
 
-Point Point::operator+( Point &p ) {
+Point Point::operator+( Point &p ) const {
     return Point( this->getX() + p.getX(), this->getY() + p.getY() );
 }
 
-Point Point::operator*( Point &p ) {
+Point Point::operator*( Point &p ) const {
     return Point( this->getX() * p.getX(), this->getY() * p.getY() );
 }
 
-Point Point::operator/( Point &p ) {
+Point Point::operator/( Point &p ) const {
     return Point( this->getX() / p.getX(), this->getY() / p.getY() );
 }
 
@@ -56,4 +56,9 @@ Fixed Point::magn( const Point &p1 ) {
 
 Fixed Point::magnR( const Point &p1 ) {
     return Fixed( p1.getX() * p1.getX() + p1.getY() * p1.getY() );
+}
+
+std::ostream &operator<<( std::ostream &o, Point const &p ) {
+    o << "Point(" << p.getX() << ", " << p.getY() << ")";
+    return o;
 }

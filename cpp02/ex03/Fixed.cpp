@@ -82,7 +82,7 @@ Fixed Fixed::operator*( const Fixed &other ) const {
 }
 
 Fixed Fixed::operator/( const Fixed &other ) const {
-    return Fixed( ( _fixed_point << _fractional_bits ) / other._fixed_point );
+    return Fixed( toFloat() / other.toFloat() );
 }
 
 Fixed Fixed::operator++() {

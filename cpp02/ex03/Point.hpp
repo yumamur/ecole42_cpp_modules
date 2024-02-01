@@ -13,10 +13,10 @@ class Point {
         Point( Fixed const x, Fixed const y );
 
         Point       &operator=( Point &p );
-        Point        operator+( Point &p );
-        Point        operator-( Point &p );
-        Point        operator*( Point &p );
-        Point        operator/( Point &p );
+        Point        operator+( Point &p ) const;
+        Point        operator-( Point &p ) const;
+        Point        operator*( Point &p ) const;
+        Point        operator/( Point &p ) const;
 
         Fixed        getX( void ) const;
         Fixed        getY( void ) const;
@@ -29,5 +29,7 @@ class Point {
         Fixed const x;
         Fixed const y;
 };
+
+std::ostream &operator<<( std::ostream &o, Point const &p );
 
 #endif
