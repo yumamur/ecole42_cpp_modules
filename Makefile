@@ -28,7 +28,7 @@ create:
 		then \
 			echo "\033[38;2;150;150;250;1mCreating Makefile for $$i\033[m"; \
 			printf "NAME = `echo $$i | cut -d/ -f2-`\n\n" > $$i/Makefile; \
-			printf "ifeq (%c(shell uname), Linux)\n" >> $$i/Makefile '$$'; \
+			printf "ifneq (%c(shell uname), Darwin)\n" >> $$i/Makefile '$$'; \
 			printf "\tCC = clang++\n" >> $$i/Makefile; \
 			printf "else\n" >> $$i/Makefile; \
 			printf "\tCC = c++\n" >> $$i/Makefile; \

@@ -1,6 +1,6 @@
 NAME = ex00
 
-ifeq ($(shell uname), Linux)
+ifneq ($(shell uname), darwin)
 	CC = clang++
 else
 	CC = c++
@@ -8,7 +8,7 @@ endif
 
 CFLAGS = -Wall -Werror -Wextra -Wpedantic -std=c++98
 
-SRC = Dog.cpp Cat.cpp main.cpp Animal.cpp 
+SRC = Animal.cpp Cat.cpp Dog.cpp main.cpp 
 
 .PHONY: all clean fclean re
 

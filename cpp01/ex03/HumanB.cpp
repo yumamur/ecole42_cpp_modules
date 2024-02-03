@@ -3,15 +3,11 @@
 #include <iostream>
 #include <string>
 
-HumanB::HumanB( std::string name )
-{
+HumanB::HumanB( std::string name ) {
 	this->name = name;
 }
 
-HumanB::~HumanB()
-{
-
-}
+HumanB::~HumanB() {}
 
 void	HumanB::setWeapon( Weapon &weaponPtr )
 {
@@ -19,6 +15,10 @@ void	HumanB::setWeapon( Weapon &weaponPtr )
 }
 
 void	HumanB::attack() {
-	std::cout << this->name << " attacks with their "
-		<< this->weapon->getType() << std::endl;
+	if (weapon != NULL) {
+		std::cout << this->name << " attacks with their "
+			<< this->weapon->getType() << std::endl;
+	} else {
+		std::cout << "You haven't given " << name << " a weapon!" << std::endl;
+	}
 }

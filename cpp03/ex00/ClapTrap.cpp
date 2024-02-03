@@ -16,15 +16,15 @@ ClapTrap::ClapTrap( const ClapTrap &source ) :
     _name( source._name ), _hitPoints( source._hitPoints ),
     _energyPoints( source._energyPoints ),
     _attackDamage( source._attackDamage ) {
-    std::cout << "ClapTrap copy constructor called" << std::endl;
+    std::cout << "ClapTrap copy constructor called with name " << _name << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << "ClapTrap destructor called" << std::endl;
+    std::cout << "ClapTrap destructor called with name " << _name << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=( const ClapTrap &source ) {
-    std::cout << "ClapTrap assignment operator called" << std::endl;
+    std::cout << "ClapTrap assignment operator called with name " << _name << std::endl;
     if ( this != &source ) {
         _name         = source._name;
         _hitPoints    = source._hitPoints;

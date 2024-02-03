@@ -3,8 +3,7 @@
 #include <iostream>
 
 HumanA::HumanA( std::string name, Weapon &wpn )
-    : weapon(wpn)
-{
+    : weapon(wpn) {
     this->name = name;
 }
 
