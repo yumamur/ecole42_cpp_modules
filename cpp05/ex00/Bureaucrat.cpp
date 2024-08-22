@@ -44,7 +44,7 @@ void Bureaucrat::incrementGrade() {
 
 void Bureaucrat::decrementGrade() {
   if ( _grade == 150 )
-    throw GradeTooLowException("asd");
+    throw GradeTooLowException();
   _grade++;
 }
 

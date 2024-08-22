@@ -14,7 +14,7 @@ class AForm {
     AForm();
     AForm( const std::string name, int gradeToSign, int gradeToExecute );
     AForm( const AForm &copy );
-    ~AForm();
+    virtual ~AForm();
 
     AForm             &operator=( const AForm &assign );
 
@@ -24,7 +24,7 @@ class AForm {
     int                getGradeToExecute() const;
 
     void               beSigned( const class Bureaucrat &b );
-    virtual void       execute( const class Bureaucrat &b );
+    virtual void       execute( const class Bureaucrat & ) {};
 };
 
 std::ostream &operator<<( std::ostream &, const AForm & );

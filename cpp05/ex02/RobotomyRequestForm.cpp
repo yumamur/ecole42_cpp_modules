@@ -28,7 +28,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=( const RobotomyRequestForm &
 	return *this;
 }
 
-void RobotomyRequestForm::execute( const Bureaucrat &executor ) const {
+void RobotomyRequestForm::execute( const Bureaucrat &executor ) {
 	if ( getGradeToExecute() < executor.getGrade() )
 		throw GradeTooLowException();
 	std::cout << "Drilling noises" << std::endl;

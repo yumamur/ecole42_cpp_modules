@@ -11,11 +11,11 @@ class RobotomyRequestForm : public AForm {
 	RobotomyRequestForm();
 	RobotomyRequestForm( const std::string target );
 	RobotomyRequestForm( const RobotomyRequestForm &copy );
-	~RobotomyRequestForm();
+	virtual ~RobotomyRequestForm();
 
 	RobotomyRequestForm &operator=( const RobotomyRequestForm &assign );
 
-	void execute( const Bureaucrat &executor ) const;
+	virtual void execute( const class Bureaucrat &executor );
 };
 
 #endif

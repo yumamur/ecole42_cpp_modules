@@ -51,7 +51,7 @@ int AForm::getGradeToExecute() const {
 
 void AForm::beSigned( const Bureaucrat &bureaucrat ) {
   if ( bureaucrat.getGrade() > _gradeToSign )
-	throw GradeTooLowException("asd");
+	throw GradeTooLowException("Who is this peasant? Grade too low to sign this form");
   else if ( _signed )
     throw FormAlreadySignedException();
   _signed = true;
