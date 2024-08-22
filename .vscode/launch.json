@@ -1,32 +1,38 @@
 {
-	"configurations": [
-
-
-	{
-		"name": "(gdb) Launch",
-		"type": "cppdbg",
-		"request": "launch",
-		"program": "${workspaceFolder}/cpp01/ex06/ex06",
-		"args": [
-			"DEBUG"
-		],
-		"stopAtEntry": true,
-		"cwd": "${fileDirname}",
-		"environment": [],
-		"externalConsole": false,
-		"MIMode": "lldb",
-		"setupCommands": [
-			{
-				"description": "Enable pretty-printing for gdb",
-				"text": "-enable-pretty-printing",
-				"ignoreFailures": true
-			},
-			{
-				"description": "Set Disassembly Flavor to Intel",
-				"text": "-gdb-set disassembly-flavor intel",
-				"ignoreFailures": true
-			}
-		]
-	}
-	]
+  "configurations": [
+    {
+      "name": "(gdb) Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/cpp01/ex06/ex06",
+      "args": [
+        "DEBUG"
+      ],
+      "stopAtEntry": true,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/yumamur/projects/github/ecole42_cpp_modules/cpp03/ex00",
+      "program": "/Users/yumamur/projects/github/ecole42_cpp_modules/cpp03/ex00/build/Debug/outDebug"
+    }
+  ]
 }

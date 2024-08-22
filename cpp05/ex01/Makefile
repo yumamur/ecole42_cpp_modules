@@ -1,4 +1,4 @@
-NAME = ex00
+NAME = ex01
 
 ifeq ($(shell uname), Linux)
 	CC = clang++
@@ -8,7 +8,7 @@ endif
 
 CFLAGS = -Wall -Werror -Wextra -Wpedantic -std=c++98
 
-SRC = Dog.cpp Cat.cpp main.cpp Animal.cpp 
+SRC = Bureaucrat.cpp Form.cpp FormAlreadySignedException.cpp GradeTooHighException.cpp GradeTooLowException.cpp main.cpp 
 
 .PHONY: all clean fclean re
 

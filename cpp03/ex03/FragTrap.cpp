@@ -3,7 +3,7 @@
 #include <iostream>
 
 FragTrap::FragTrap( void ) : ClapTrap() {
-    std::cout << "FragTrap default constructor called for " << _name << std::endl;
+    std::cout << "FragTrap default constructor called" << std::endl;
     _hitPoints    = 100;
     _energyPoints = 100;
     _attackDamage = 30;
@@ -17,7 +17,7 @@ FragTrap::FragTrap( std::string const &name ) : ClapTrap( name ) {
 }
 
 FragTrap::FragTrap( FragTrap const &source ) : ClapTrap( source ) {
-    std::cout << "FragTrap copy constructor called from " << source._name << std::endl;
+    std::cout << "FragTrap copy constructor called from " << std::endl;
 
     if ( this != &source ) {
         _name         = source._name;
@@ -28,7 +28,7 @@ FragTrap::FragTrap( FragTrap const &source ) : ClapTrap( source ) {
 }
 
 FragTrap::~FragTrap( void ) {
-    std::cout << "FragTrap destructor called for " << _name << std::endl;
+    std::cout << "FragTrap destructor called" << std::endl;
 }
 
 FragTrap &FragTrap::operator=( FragTrap const &source ) {

@@ -1,5 +1,4 @@
 #include "DiamondTrap.hpp"
-#include <iostream>
 
 int main() {
     DiamondTrap diamondTrap( "foo" );
@@ -10,8 +9,4 @@ int main() {
     diamondTrap.highFivesGuys();
     diamondTrap.guardGate();
     diamondTrap.whoAmI();
-
-	std::cout << std::endl;
-	DiamondTrap iamondTrap;
-	std::cout << std::endl;
 }

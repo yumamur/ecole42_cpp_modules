@@ -4,7 +4,7 @@
 
 DiamondTrap::DiamondTrap( void ) : ClapTrap(), ScavTrap(), FragTrap() {
     std::cout << "DiamondTrap default constructor called" << std::endl;
-    _name         = "Six Organs of Admittance";
+    _name         = "default";
     _hitPoints    = FragTrap::_hitPoints;
     _energyPoints = ScavTrap::_energyPoints;
     _attackDamage = FragTrap::_attackDamage;
@@ -23,7 +23,7 @@ DiamondTrap::DiamondTrap( std::string const &name ) :
 
 DiamondTrap::DiamondTrap( DiamondTrap const &source ) :
     ClapTrap( source ), ScavTrap( source ), FragTrap( source ) {
-    std::cout << "DiamondTrap copy constructor called" << std::endl;
+    std::cout << "DiamondTrap copy constructor called from " << std::endl;
 
     if ( this != &source ) {
         _name         = source._name;
@@ -34,7 +34,7 @@ DiamondTrap::DiamondTrap( DiamondTrap const &source ) :
 }
 
 DiamondTrap::~DiamondTrap( void ) {
-    std::cout << "DiamondTrap destructor called for " << _name << std::endl;
+    std::cout << "DiamondTrap destructor called" << std::endl;
 }
 
 DiamondTrap &DiamondTrap::operator=( DiamondTrap const &source ) {

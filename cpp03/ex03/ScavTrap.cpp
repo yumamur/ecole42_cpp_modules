@@ -3,7 +3,7 @@
 #include <iostream>
 
 ScavTrap::ScavTrap() : ClapTrap(), _guardGate( false ) {
-    std::cout << "ScavTrap default constructor is called for " << _name << std::endl;
+    std::cout << "ScavTrap default constructor is called" << std::endl;
     _hitPoints    = 100;
     _energyPoints = 50;
     _attackDamage = 20;
