@@ -1,7 +1,7 @@
 #include "RobotomyRequestForm.hpp"
 
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "GradeTooLowException.hpp"
 
 #include <cstdlib>
 #include <iostream>
@@ -30,7 +30,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=( const RobotomyRequestForm &
 
 void RobotomyRequestForm::execute( const Bureaucrat &executor ) {
 	if ( getGradeToExecute() < executor.getGrade() )
-		throw GradeTooLowException();
+		throw AForm::GradeTooLowException("Bureaucrat's grade is too low to robotomize anyone");
 	std::cout << "Drilling noises" << std::endl;
 	if ( rand() % 2 )
 		std::cout << _target << " has been robotomized successfully" << std::endl;

@@ -1,13 +1,12 @@
 #include "PresidentialPardonForm.hpp"
 
 #include "Bureaucrat.hpp"
-#include "GradeTooLowException.hpp"
 
 #include <iostream>
 #include <stdexcept>
 
 PresidentialPardonForm::PresidentialPardonForm() {
-	throw std::invalid_argument( "PresidentialPardonForm: default constructor is not allowed" );
+  throw std::invalid_argument( "PresidentialPardonForm: default constructor is not allowed" );
 }
 
 PresidentialPardonForm::PresidentialPardonForm( const std::string target ) :
@@ -30,6 +29,6 @@ PresidentialPardonForm &PresidentialPardonForm::operator=( const PresidentialPar
 
 void PresidentialPardonForm::execute( const Bureaucrat &executor ) {
   if ( getGradeToExecute() < executor.getGrade() )
-    throw GradeTooLowException();
+    throw AForm::GradeTooLowException("Bureaucrat's is not presidential enough");
   std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

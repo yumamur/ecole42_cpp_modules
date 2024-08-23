@@ -24,6 +24,39 @@ class Form {
     int                getGradeToExecute() const;
 
     void               beSigned( const class Bureaucrat &bureaucrat );
+
+    class GradeTooHighException : public std::exception {
+      private:
+        const std::string _msg;
+
+      public:
+        GradeTooHighException() throw();
+        GradeTooHighException( const std::string & ) throw();
+        ~GradeTooHighException() throw();
+        virtual const char *what() const throw();
+    };
+
+    class GradeTooLowException : public std::exception {
+      private:
+        const std::string _msg;
+
+      public:
+        GradeTooLowException() throw();
+        GradeTooLowException( const std::string & ) throw();
+        ~GradeTooLowException() throw();
+        virtual const char *what() const throw();
+    };
+
+    class FormAlreadySignedException : public std::exception {
+      private:
+        const std::string _msg;
+
+      public:
+        FormAlreadySignedException() throw();
+        FormAlreadySignedException( const std::string & ) throw();
+        ~FormAlreadySignedException() throw();
+        virtual const char *what() const throw();
+    };
 };
 
 std::ostream &operator<<( std::ostream &out, const Form &form );

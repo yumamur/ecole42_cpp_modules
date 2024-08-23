@@ -1,7 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
 
 #include "Bureaucrat.hpp"
-#include "GradeTooLowException.hpp"
 
 #include <fstream>
 
@@ -29,8 +28,9 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=( const ShrubberyCreation
 
 void ShrubberyCreationForm::execute( const Bureaucrat &executor ) {
   if ( getGradeToExecute() < executor.getGrade() )
-    throw GradeTooLowException();
-  std::ofstream file( _target + "_shrubbery" );
+    throw GradeTooLowException("Bureaucrat's grade is too low to create shrubbery");
+  std::string filename = _target + "_shrubbery";
+  std::ofstream file( filename.c_str() );
   if ( !file.is_open() )
     throw std::runtime_error( "ShrubberyCreationForm: cannot open file" );
   file << "      /\\      " << std::endl;

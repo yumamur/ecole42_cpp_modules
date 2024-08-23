@@ -8,7 +8,7 @@ endif
 
 CFLAGS = -Wall -Werror -Wextra -Wpedantic -std=c++98
 
-SRC = AForm.cpp Bureaucrat.cpp FormAlreadySignedException.cpp GradeTooHighException.cpp GradeTooLowException.cpp main.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp 
+SRC = AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp main.cpp 
 
 .PHONY: all clean fclean re
 

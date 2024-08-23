@@ -23,7 +23,29 @@ class Bureaucrat {
     void               decrementGrade();
 
     void               signForm( class AForm &form );
-	void			   executeForm( class AForm &form);
+    void               executeForm( class AForm &form );
+
+    class GradeTooHighException : public std::exception {
+      private:
+        const std::string _msg;
+
+      public:
+        GradeTooHighException() throw();
+        GradeTooHighException( const std::string & ) throw();
+		~GradeTooHighException() throw();
+        virtual const char *what() const throw();
+    };
+
+    class GradeTooLowException : public std::exception {
+      private:
+        const std::string _msg;
+
+      public:
+        GradeTooLowException() throw();
+        GradeTooLowException( const std::string & ) throw();
+		~GradeTooLowException() throw();
+        virtual const char *what() const throw();
+    };
 };
 
 std::ostream &operator<<( std::ostream &out, const Bureaucrat &bureaucrat );

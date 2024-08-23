@@ -66,7 +66,7 @@ void tryDeleteForm( AForm *f ) {
 }
 
 int main( void ) {
-  Bureaucrat *arr[5] = { tryNewBureaucrat( "b1", 10 ), tryNewBureaucrat( "b2", 140 ),
+  Bureaucrat *arr[5] = { tryNewBureaucrat( "b1", 44 ), tryNewBureaucrat( "b2", 140 ),
                          tryNewBureaucrat( "b3", 1 ), tryNewBureaucrat( "b4", 150 ),
                          tryNewBureaucrat( "b5", 75 ) };
 

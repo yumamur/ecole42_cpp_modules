@@ -1,16 +1,12 @@
 #include "AForm.hpp"
+
 #include "Bureaucrat.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
-#include "FormAlreadySignedException.hpp"
 
 AForm::AForm() : _name( "default" ), _signed( false ), _gradeToSign( 150 ), _gradeToExecute( 150 ) {
 }
 
 AForm::AForm( const std::string name, int gradeToSign, int gradeToExecute ) :
-    _name( name ),
-	_signed( false ),
-	_gradeToSign( gradeToSign ),
+    _name( name ), _signed( false ), _gradeToSign( gradeToSign ),
     _gradeToExecute( gradeToExecute ) {
   if ( gradeToSign < 1 || gradeToExecute < 1 )
     throw GradeTooHighException();
@@ -19,9 +15,7 @@ AForm::AForm( const std::string name, int gradeToSign, int gradeToExecute ) :
 }
 
 AForm::AForm( const AForm &copy ) :
-    _name( copy.getName() ),
-	_signed( copy.isSigned() ),
-	_gradeToSign( copy.getGradeToSign() ),
+    _name( copy.getName() ), _signed( copy.isSigned() ), _gradeToSign( copy.getGradeToSign() ),
     _gradeToExecute( copy.getGradeToExecute() ) {
 }
 
@@ -51,7 +45,7 @@ int AForm::getGradeToExecute() const {
 
 void AForm::beSigned( const Bureaucrat &bureaucrat ) {
   if ( bureaucrat.getGrade() > _gradeToSign )
-	throw GradeTooLowException("Who is this peasant? Grade too low to sign this form");
+    throw GradeTooLowException();
   else if ( _signed )
     throw FormAlreadySignedException();
   _signed = true;
@@ -59,7 +53,54 @@ void AForm::beSigned( const Bureaucrat &bureaucrat ) {
 
 std::ostream &operator<<( std::ostream &out, const AForm &form ) {
   out << "AForm " << form.getName() << " is " << ( form.isSigned() ? "" : "not " )
-	  << "signed. Grade to sign: " << form.getGradeToSign()
-	  << ". Grade to execute: " << form.getGradeToExecute();
+      << "signed. Grade to sign: " << form.getGradeToSign()
+      << ". Grade to execute: " << form.getGradeToExecute();
   return out;
+}
+
+AForm::GradeTooHighException::GradeTooHighException() throw() : _msg( "" ) {
+}
+
+AForm::GradeTooHighException::GradeTooHighException( const std::string &msg ) throw() :
+    _msg( msg ) {
+}
+
+AForm::GradeTooHighException::~GradeTooHighException() throw() {
+}
+
+AForm::GradeTooLowException::GradeTooLowException() throw() : _msg( "" ) {
+}
+
+AForm::GradeTooLowException::GradeTooLowException( const std::string &msg ) throw() : _msg( msg ) {
+}
+
+AForm::GradeTooLowException::~GradeTooLowException() throw() {
+}
+
+AForm::FormAlreadySignedException::FormAlreadySignedException() throw() : _msg( "" ) {
+}
+
+AForm::FormAlreadySignedException::FormAlreadySignedException( const std::string &msg ) throw() :
+    _msg( msg ) {
+}
+
+AForm::FormAlreadySignedException::~FormAlreadySignedException() throw() {
+}
+
+const char *AForm::GradeTooHighException::what() const throw() {
+  if ( _msg.empty() )
+    return "Grade is too high for a form";
+  return _msg.c_str();
+}
+
+const char *AForm::GradeTooLowException::what() const throw() {
+  if ( _msg.empty() )
+    return "Grade is too low for a form";
+  return _msg.c_str();
+}
+
+const char *AForm::FormAlreadySignedException::what() const throw() {
+  if ( _msg.empty() )
+    return "Form is already signed";
+  return _msg.c_str();
 }
