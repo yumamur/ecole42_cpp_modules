@@ -24,7 +24,7 @@ all re clean:
 create:
 	@for i in $(MODULES); \
 	do \
-		if [ ! -f "$$i/Makefile" ] && [ -n "$$(find $$i -name '*.cpp' -print -quit)" ]; \
+		if [[ ! -f "$$i/Makefile" ]] && [[ -n "$$(find $$i -name '*.cpp' -print -quit)" ]]; \
 		then \
 			echo "\033[38;2;150;150;250;1mCreating Makefile for $$i\033[m"; \
 			printf "NAME = `echo $$i | cut -d/ -f2-`\n\n" > $$i/Makefile; \
@@ -44,8 +44,8 @@ create:
 			printf "fclean:\n" >> $$i/Makefile; \
 			printf "\trm -rf %c(NAME)\n\n" '$$' >> $$i/Makefile; \
 			printf "re: clean all\n" >> $$i/Makefile; \
-		elif [ -f "$$i/Makefile" ] && [ $(SRC) != "" ]; \
+		elif [[ -f "$$i/Makefile" ]] && [[ $(SRC) != "" ]]; \
 		then \
-			sed -i 's/SRC =.*/SRC = $(SRC)/g' "$$i/Makefile"; \
+			sed -i 's|SRC =.*|SRC = $(SRC)|g' "$$i/Makefile"; \
 		fi \
 	done
