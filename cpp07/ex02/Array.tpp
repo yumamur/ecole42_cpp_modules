@@ -39,9 +39,16 @@ Array<T> &Array<T>::operator=( Array const &assign ) {
 
 template<typename T>
 T &Array<T>::operator[]( long i ) {
-  std::cout << i << std::endl;
   if ( i < 0 || i > std::numeric_limits<int>::max() || ( unsigned long ) i >= _size ) {
     throw std::exception();
+  }
+  return _array[i];
+}
+
+template<typename T>
+const T &Array<T>::operator[]( long i ) const {
+  if ( i < 0 || i > std::numeric_limits<int>::max() || ( unsigned long ) i >= _size ) {
+	throw std::exception();
   }
   return _array[i];
 }

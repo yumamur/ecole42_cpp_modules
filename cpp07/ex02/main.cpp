@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 
-#define MAX_VAL 750
+#define MAX_VAL 5
 int main( int, char ** ) {
   Array<int> numbers( MAX_VAL );
   int       *mirror = new int[MAX_VAL];
@@ -38,6 +38,7 @@ int main( int, char ** ) {
   for ( int i = 0; i < MAX_VAL; i++ ) {
     numbers[i] = rand();
   }
+  std::cout << numbers << std::endl;
   delete[] mirror;       //
   return 0;
 }

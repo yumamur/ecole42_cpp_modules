@@ -10,6 +10,7 @@ class Array {
     ~Array();
     Array       &operator=( Array const &assign );
     T           &operator[]( long );
+	const T     &operator[]( long ) const;
     unsigned int size() const;
     void         iter( void ( *f )( T const         &) ) const;
     T           &map( T ( *f )( T const           &) ) const;
