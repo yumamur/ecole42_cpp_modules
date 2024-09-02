@@ -176,6 +176,18 @@ int pseudoLiterals( std::string toConvert ) {
   return ( 0 );
 }
 
+int someRandomString( std::string toConvert ) {
+  if ( toConvert.length() == 1 && !isdigit( *toConvert.c_str() ) && !isprint( *toConvert.c_str() ) ) {
+	type = -1;
+	return ( -1 );
+  }
+  if ( toConvert.length() > 1 && !pseudoLiterals(toConvert) ) {
+	type = -1;
+    return ( -1 );
+  }
+  return ( 0 );
+}
+
 void printPseudos() {
   std::cout << "Char: "
             << "impossible" << std::endl;
@@ -193,12 +205,14 @@ int parseString( std::string toConvert ) {
     return ( type );
   else if ( pseudoLiterals( toConvert ) == TYPE_PSEUDOS )
     return ( type );
+  else if ( someRandomString( toConvert ) == -1 )
+	return ( 0 );
 
   double temp = strtod( toConvert.c_str(), NULL );
 
   if ( temp == HUGE_VAL || temp == -HUGE_VAL )
     return ( -1 );
-  if ( checkDigit( temp, toConvert ) == 1 || errno == ERANGE || errno == EDOM || errno == EILSEQ )
+  if ( checkDigit( temp, toConvert ) || errno == ERANGE || errno == EDOM || errno == EILSEQ )
     return ( -1 );
   if ( checkInt( temp, toConvert ) == TYPE_INT )
     return ( type );
